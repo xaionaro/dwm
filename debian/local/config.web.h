@@ -20,6 +20,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "web" };
+static const int taglayouts[] = { 0 };
 
 static const Rule rules[] = {
 	{ 0 }
