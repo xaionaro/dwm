@@ -2,3 +2,5 @@
 2002_inject_hardening_flags.patch
 2004_use_system_searchpaths.patch
 void-config.patch
+update-the-config
+update-2024-10-31

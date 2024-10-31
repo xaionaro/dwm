@@ -48,7 +48,6 @@ static const Rule rules[] = {
 	{ "Discord",		NULL,		NULL, 		1<<2,			0,			0 },
 	{ "Bazecor",		NULL,		NULL, 		1<<6,			0,			0 },
 	{ "Element",		NULL,		NULL, 		1<<1,			0,			1 },
-	{ NULL,  			NULL,       "dwm-background", 1,		0,          2 },
 };
 
 /* layout(s) */

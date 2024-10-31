@@ -1,0 +1,78 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ dwm (6.4-1) unstable; urgency=low
+ .
+   * Salvage package (Closes: #1025325).
+   * New upstream release.
+   * debian/control:
+     - Add new maintainer.
+     - Bump Standards-Version to 4.6.2.
+     - Remove old maintainer's VCS fields.
+     - Change Rules-Requires-Root field to no.
+   * debian/copyright:
+     - Update copyright for new upstream release.
+     - Update Matteo's email address.
+   * debian/dwm.menu:
+     - Delete menu file due to Technical Committee decision.
+   * debian/icons:
+     - Update dwm.png with upstream one.
+     - Add hicolor scalable icon in places dir (dwm_badge-symbolic.svg) for
+       lightdm-gtk-greeter.
+   * debian/patches/*:
+     - Refresh patches for new upstream release.
+   * debian/upstream/metadata:
+     - Add basic upstream meta-information.
+Author: Matteo Bini <matteobin@tiepi.it>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout https://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: (upstream|backport|vendor|other), (<patch-url>|commit:<commit-id>)
+Bug: <upstream-bugtracker-url>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: (no|not-needed|<patch-forwarded-url>)
+Applied-Upstream: <version>, (<commit-url>|commit:<commid-id>)
+Reviewed-By: <name and email of someone who approved/reviewed the patch>
+Last-Update: 2024-10-31
+
+--- dwm-6.4.orig/Makefile
++++ dwm-6.4/Makefile
+@@ -23,7 +23,7 @@ config.h:
+ 	cp config.def.h $@
+ 
+ dwm: ${OBJ}
+-	${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -g3 -o $@ ${OBJ} ${LDFLAGS}
+ 
+ clean:
+ 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
+--- dwm-6.4.orig/config.def.h
++++ dwm-6.4/config.def.h
+@@ -48,6 +48,7 @@ static const Rule rules[] = {
+ 	{ "Discord",		NULL,		NULL, 		1<<2,			0,			0 },
+ 	{ "Bazecor",		NULL,		NULL, 		1<<6,			0,			0 },
+ 	{ "Element",		NULL,		NULL, 		1<<1,			0,			1 },
++	{ NULL,  			NULL,       "dwm-background", 1,		0,          2 },
+ };
+ 
+ /* layout(s) */
+--- dwm-6.4.orig/dwm.c
++++ dwm-6.4/dwm.c
+@@ -1644,6 +1644,9 @@ setfullscreen(Client *c, int fullscreen)
+ void
+ setlayout(const Arg *arg)
+ {
++	if (selmon == NULL || selmon->lt[selmon->sellt] == NULL || selmon->lt[selmon->sellt]->symbol == NULL) {
++		return;
++	}
+ 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
+ 		selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
+ 	if (arg && arg->v)

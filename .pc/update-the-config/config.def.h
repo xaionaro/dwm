@@ -33,7 +33,7 @@ static const Rule rules[] = {
 	{ NULL,  			NULL,       "Mozilla Firefox", 2,		0,          0 },
 	{ "Chromium",  		NULL,       NULL,       1<<1,			0,          0 },
 	{ "Fyne",  			NULL,       NULL,       0,				1,          -1 },
-	{ "Pomodoro",  		NULL,       NULL,       0xFF,			1,          3 },
+	{ "Pomodoro",  		NULL,       NULL,       0xFF,			1,          1 },
 	{ "Fynodoro",  		NULL,       NULL,       0xFF,			1,          1 },
 	{ "StreamPanel",  	NULL,       NULL,       0,				1,          1 },
 	{ "pinentry",  		NULL,       NULL,       0,				1,          0 },
@@ -48,7 +48,6 @@ static const Rule rules[] = {
 	{ "Discord",		NULL,		NULL, 		1<<2,			0,			0 },
 	{ "Bazecor",		NULL,		NULL, 		1<<6,			0,			0 },
 	{ "Element",		NULL,		NULL, 		1<<1,			0,			1 },
-	{ NULL,  			NULL,       "dwm-background", 1,		0,          2 },
 };
 
 /* layout(s) */

@@ -1644,9 +1644,6 @@ setfullscreen(Client *c, int fullscreen)
 void
 setlayout(const Arg *arg)
 {
-	if (selmon == NULL || selmon->lt[selmon->sellt] == NULL || selmon->lt[selmon->sellt]->symbol == NULL) {
-		return;
-	}
 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
 		selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
 	if (arg && arg->v)
